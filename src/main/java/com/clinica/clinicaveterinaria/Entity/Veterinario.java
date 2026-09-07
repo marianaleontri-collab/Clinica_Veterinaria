@@ -1,4 +1,4 @@
-package com.clinica.veterinaria;
+package com.clinica.clinicaveterinaria.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "propietario")
+@Table(name = "veterinario")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Propietario {
+public class Veterinario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,19 +24,19 @@ public class Propietario {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @NotBlank(message = "El documento es requerido")
+    @NotBlank(message = "La tarjeta profesional es requerida")
     @Column(nullable = false, unique = true, length = 50)
-    private String documento;
+    private String tarjetaProfesional;
 
-    @NotBlank(message = "El teléfono es requerido")
-    @Column(nullable = false, length = 20)
-    private String telefono;
+    @NotBlank(message = "La especialidad es requerida")
+    @Column(nullable = false, length = 100)
+    private String especialidad;
 
     @NotBlank(message = "El correo es requerido")
     @Email(message = "El correo debe ser válido")
     @Column(nullable = false, unique = true, length = 100)
     private String correo;
 
-    @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(mappedBy = "veterinarios")
     private List<Mascota> mascotas;
 }

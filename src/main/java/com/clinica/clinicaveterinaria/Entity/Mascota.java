@@ -1,4 +1,4 @@
-package com.clinica.veterinaria;
+package com.clinica.clinicaveterinaria.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

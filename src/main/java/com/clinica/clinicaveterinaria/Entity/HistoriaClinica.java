@@ -1,4 +1,4 @@
-package com.clinica.veterinaria;
+package com.clinica.clinicaveterinaria.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -25,11 +25,11 @@ public class HistoriaClinica {
     private LocalDate fechaApertura;
 
     @NotBlank(message = "Los antecedentes son requeridos")
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String antecedentes;
 
     @NotBlank(message = "Las observaciones son requeridas")
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String observaciones;
 
     @OneToOne
